@@ -12,13 +12,13 @@ class Education extends Model
         'degree',
         'start_date',
         'end_date',
-        'description'
+        'description',
+        'status'
     ];
 
     protected $casts = [
         'start_date' => 'date',
         'end_date' => 'date',
+        'status' => 'boolean'
     ];
 }
-
-

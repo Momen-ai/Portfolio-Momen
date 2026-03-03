@@ -11,7 +11,11 @@ class Testimonial extends Model
         'position',
         'feedback',
         'rating',
-        'client_image'
+        'client_image',
+        'status'
+    ];
+
+    protected $casts = [
+        'status' => 'boolean'
     ];
 }
-

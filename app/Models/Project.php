@@ -14,11 +14,13 @@ class Project extends Model
         'image',
         'github_url',
         'demo_url',
-        'is_featured'
+        'is_featured',
+        'status'
     ];
 
     protected $casts = [
-        'is_featured' => 'boolean'
+        'is_featured' => 'boolean',
+        'status' => 'boolean'
     ];
 
     protected static function boot()

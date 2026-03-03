@@ -10,7 +10,12 @@ class Skill extends Model
         'name',
         'percentage',
         'category',
-        'order'
+        'order',
+        'status'
+    ];
+
+    protected $casts = [
+        'status' => 'boolean'
     ];
 
     public function projects()
