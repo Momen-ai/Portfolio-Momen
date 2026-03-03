@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('client_name');
             $table->string('position')->nullable();
             $table->text('feedback');
+            $table->integer('rating')->nullable();
             $table->string('client_image')->nullable();
             $table->timestamps();
         });
-
     }
 
     /**

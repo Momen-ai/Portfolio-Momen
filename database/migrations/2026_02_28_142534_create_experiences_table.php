@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('company');
             $table->string('position');
-            $table->string('period');
+            $table->date('start_date');
+            $table->date('end_date')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });
-
     }
 
     /**

@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('percentage');
-            $table->enum('type', ['coding', 'professional']);
+            $table->string('category'); // coding, professional, tools, frameworks
+            $table->integer('order')->default(0);
             $table->timestamps();
         });
-
     }
 
     /**

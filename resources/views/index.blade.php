@@ -13,7 +13,7 @@
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
                 </div>
                 <div class="col-lg-5 home-img-container">
                     <div class="home-img">
-                        <img src="images/file_0000000044cc7243ae56e37cd49e7e59.png" alt="Jacob Aiden"
+                        <img src="{{asset('assets/images/file_0000000044cc7243ae56e37cd49e7e59.png')}}" alt="Jacob Aiden"
                             class="portrait-img img-fluid">
                         <div class="img-overlay"></div>
                     </div>
@@ -87,7 +87,7 @@
             <div class="row align-items-center text-center text-lg-start">
                 <div class="col-lg-5 d-flex justify-content-center mb-5 mb-lg-0">
                     <div class="about-img">
-                        <img src="images/74d36903-8ae6-4306-aa94-f2a0c1fa6681.jpg" alt="Profile" class="img-fluid">
+                        <img src="{{asset('assets/images/74d36903-8ae6-4306-aa94-f2a0c1fa6681.jpg')}}" alt="Profile" class="img-fluid">
                         <span class="circle-spin"></span>
                     </div>
                 </div>
@@ -291,7 +291,7 @@
     <!-- Bootstrap 5.3 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
-    <script src="js/script.js"></script>
+    <script src="{{asset('assets/js/script.js')}}"></script>
 </body>
 
 </html>
