@@ -93,7 +93,7 @@ class ProjectController extends Controller
         if ($project->image) {
             Storage::disk('public')->delete($project->image);
         }
-        
+
         $project->delete();
 
         return redirect()->route('dashboard.projects.index')->with('success', 'Project deleted successfully.');

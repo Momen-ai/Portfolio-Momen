@@ -15,7 +15,7 @@ return [
         'title' => 'Software Engineer',
         'description' => 'Focused on building scalable systems and clean, maintainable architectures. I design solutions — not just code.',
         'hire_me' => 'Hire Me',
-        'cv' => 'Download CV',
+        'cv' => 'My CV',
     ],
     'about' => [
         'title' => 'Me',
@@ -59,5 +59,9 @@ return [
     ],
     'footer' => [
         'rights' => 'All Rights Reserved.',
+    ],
+    'seo' => [
+        'description' => 'Momen Rami - Software Engineer Portfolio. Focused on building scalable systems, clean code, and innovative digital solutions.',
+        'keywords' => 'Software Engineer, Full Stack Developer, Laravel, PHP, Portfolio, Momen Rami, Web Development',
     ],
 ];

@@ -16,9 +16,9 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('dashboard.projects.index')" :active="request()->routeIs('dashboard.projects.*')">
+                    {{-- <x-nav-link :href="route('dashboard.projects.index')" :active="request()->routeIs('dashboard.projects.*')">
                         {{ __('Projects') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
 
                     <x-nav-link :href="route('dashboard.skills.index')" :active="request()->routeIs('dashboard.skills.*')">
                         {{ __('Skills') }}
@@ -32,15 +32,15 @@
                         {{ __('Education') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('dashboard.testimonials.index')" :active="request()->routeIs('dashboard.testimonials.*')">
+                    {{-- <x-nav-link :href="route('dashboard.testimonials.index')" :active="request()->routeIs('dashboard.testimonials.*')">
                         {{ __('Testimonials') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
 
                     <x-nav-link :href="route('dashboard.messages.index')" :active="request()->routeIs('dashboard.messages.*')">
                         {{ __('Messages') }}
                     </x-nav-link>
 
-                    
+
 
 
                 </div>

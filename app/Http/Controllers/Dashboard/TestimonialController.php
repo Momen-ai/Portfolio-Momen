@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Testimonial;
-use App\Http\Requests\StoreTestimonialRequest;
-use App\Http\Requests\UpdateTestimonialRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -31,10 +29,16 @@ class TestimonialController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTestimonialRequest $request)
+    public function store(Request $request)
     {
-        $validated = $request->validated();
-        
+        $validated = $request->validate([
+            'client_name' => 'required|string|max:255',
+            'position'    => 'nullable|string|max:255',
+            'feedback'    => 'required|string',
+            'rating'      => 'nullable|integer|min:1|max:5',
+            'client_image'=> 'nullable|image|max:2048',
+        ]);
+
         if ($request->hasFile('client_image')) {
             $validated['client_image'] = $request->file('client_image')->store('testimonials', 'public');
         }
@@ -44,14 +48,6 @@ class TestimonialController extends Controller
         Testimonial::create($validated);
 
         return redirect()->route('dashboard.testimonials.index')->with('success', 'Testimonial created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Testimonial $testimonial)
-    {
-        return view('admin.testimonials.show', compact('testimonial'));
     }
 
     /**
@@ -65,10 +61,16 @@ class TestimonialController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTestimonialRequest $request, Testimonial $testimonial)
+    public function update(Request $request, Testimonial $testimonial)
     {
-        $validated = $request->validated();
-        
+        $validated = $request->validate([
+            'client_name' => 'required|string|max:255',
+            'position'    => 'nullable|string|max:255',
+            'feedback'    => 'required|string',
+            'rating'      => 'nullable|integer|min:1|max:5',
+            'client_image'=> 'nullable|image|max:2048',
+        ]);
+
         if ($request->hasFile('client_image')) {
             if ($testimonial->client_image) {
                 Storage::disk('public')->delete($testimonial->client_image);
@@ -91,7 +93,7 @@ class TestimonialController extends Controller
         if ($testimonial->client_image) {
             Storage::disk('public')->delete($testimonial->client_image);
         }
-        
+
         $testimonial->delete();
 
         return redirect()->route('dashboard.testimonials.index')->with('success', 'Testimonial deleted successfully.');
