@@ -13,7 +13,7 @@ services:
         value: false
       - key: DB_CONNECTION
         value: pgsql
-      - key: DATABASE_URL
+      - key: DB_URL # Matches config/database.php env('DB_URL')
         fromDatabase:
           name: portfolio-db
           property: connectionString

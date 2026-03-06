@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /admin
 Disallow: /dashboard
 
-Sitemap: https://momenrami.dev/sitemap.xml
+Sitemap: https://momen-portfolio.onrender.com/sitemap.xml
