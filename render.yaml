@@ -10,14 +10,14 @@ services:
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
-        value: false
+        value: "false"
       - key: APP_NAME
         value: Portfolio
       - key: APP_URL
         value: https://momen-portfolio.onrender.com
       - key: DB_CONNECTION
         value: pgsql
-      - key: DB_URL # Matches config/database.php env('DB_URL')
+      - key: DB_URL
         fromDatabase:
           name: portfolio-db
           property: connectionString
@@ -28,7 +28,7 @@ services:
       - key: SESSION_DRIVER
         value: database
       - key: SESSION_LIFETIME
-        value: 120
+        value: "120"
       - key: QUEUE_CONNECTION
         value: database
       - key: CACHE_STORE
@@ -40,7 +40,7 @@ services:
       - key: MAIL_HOST
         value: smtp.gmail.com
       - key: MAIL_PORT
-        value: 587
+        value: "587"
       - key: MAIL_USERNAME
         value: mumenrami1411@gmail.com
       - key: MAIL_ENCRYPTION
@@ -49,15 +49,12 @@ services:
         value: "mumenrami1411@gmail.com"
       - key: MAIL_FROM_NAME
         value: "Momen Portfolio"
-      # Secrets to be set in the Render Dashboard
       - key: APP_KEY
-        generateValue: true
+        value: "placeholder_key"
       - key: MAIL_PASSWORD
-        value: "REPLACE_WITH_YOUR_GMAIL_APP_PASSWORD"
+        value: "placeholder_password"
 
 databases:
   - name: portfolio-db
     plan: free
     region: frankfurt
-    databaseName: portfolio
-    user: momen
