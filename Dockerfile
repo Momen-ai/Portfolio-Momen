@@ -20,10 +20,11 @@ RUN apk add --no-cache \
     curl \
     oniguruma-dev \
     postgresql-client \
-    icu-dev
+    icu-dev \
+    libxml2-dev
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo pdo_pgsql pgsql mbstring zip bcmath intl opcache
+RUN docker-php-ext-install pdo pdo_pgsql pgsql mbstring zip bcmath intl opcache xml
 
 # Copy composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -34,11 +35,18 @@ WORKDIR /var/www/html
 COPY . .
 COPY --from=build /app/public/build ./public/build
 
-# Install dependencies (ignoring scripts during build to prevent discovery errors)
+# Install dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+# Create necessary directories and set permissions
+RUN mkdir -p storage/framework/cache/data \
+    storage/framework/app/cache \
+    storage/framework/sessions \
+    storage/framework/views \
+    storage/logs \
+    bootstrap/cache \
+    && chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
+    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Copy Nginx config
 COPY deployment/nginx.conf /etc/nginx/http.d/default.conf
