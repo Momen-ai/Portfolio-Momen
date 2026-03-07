@@ -5,11 +5,6 @@
 /public/storage
 /public/build
 .phpunit.result.cache
-.env.backup
-.env.production
-composer.lock
-package-lock.json
-.git
 .github
 tests
 phpunit.xml

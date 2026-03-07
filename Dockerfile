@@ -7,7 +7,7 @@ COPY . .
 RUN npm run build
 
 # Final stage for PHP
-FROM php:8.2-fpm-alpine
+FROM php:8.3-fpm-alpine
 
 # Install system dependencies
 RUN apk add --no-cache \
@@ -19,10 +19,11 @@ RUN apk add --no-cache \
     git \
     curl \
     oniguruma-dev \
-    postgresql-client
+    postgresql-client \
+    icu-dev
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo pdo_pgsql pgsql mbstring zip bcmath
+RUN docker-php-ext-install pdo pdo_pgsql pgsql mbstring zip bcmath intl opcache
 
 # Copy composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -33,8 +34,8 @@ WORKDIR /var/www/html
 COPY . .
 COPY --from=build /app/public/build ./public/build
 
-# Install dependencies
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+# Install dependencies (ignoring scripts during build to prevent discovery errors)
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache

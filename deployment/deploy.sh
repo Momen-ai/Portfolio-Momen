@@ -3,15 +3,18 @@
 # Start PHP-FPM in the background
 php-fpm -D
 
-# Run migrations if database is ready
-echo "Running migrations..."
-php artisan migrate --force
+# Clear caches and run discovery (since we skipped it during build)
+echo "Discovering packages..."
+php artisan package:discover --ansi
 
-# Optimize Laravel
 echo "Optimizing Laravel..."
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
+
+# Run migrations if database is ready
+echo "Running migrations..."
+php artisan migrate --force
 
 # Start Nginx in the foreground
 echo "Starting Nginx..."
