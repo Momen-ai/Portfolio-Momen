@@ -49,11 +49,11 @@ services:
         value: "mumenrami1411@gmail.com"
       - key: MAIL_FROM_NAME
         value: "Momen Portfolio"
-      # Secrets to be set in the Render Dashboard dashboard (marked as sync)
+      # Secrets to be set in the Render Dashboard
       - key: APP_KEY
-        sync: true
+        generateValue: true
       - key: MAIL_PASSWORD
-        sync: true
+        value: "REPLACE_WITH_YOUR_GMAIL_APP_PASSWORD"
 
 databases:
   - name: portfolio-db
