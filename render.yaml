@@ -4,13 +4,17 @@ services:
     env: docker
     dockerContext: .
     dockerfilePath: Dockerfile
-    plan: free # or your preferred plan
-    region: frankfurt # choose your region
+    plan: free
+    region: frankfurt
     envVars:
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
         value: false
+      - key: APP_NAME
+        value: Portfolio
+      - key: APP_URL
+        value: https://momen-portfolio.onrender.com
       - key: DB_CONNECTION
         value: pgsql
       - key: DB_URL # Matches config/database.php env('DB_URL')
@@ -18,15 +22,42 @@ services:
           name: portfolio-db
           property: connectionString
       - key: LOG_CHANNEL
-        value: errorlog
+        value: stack
+      - key: LOG_LEVEL
+        value: error
       - key: SESSION_DRIVER
         value: database
+      - key: SESSION_LIFETIME
+        value: 120
       - key: QUEUE_CONNECTION
-        value: sync
+        value: database
+      - key: CACHE_STORE
+        value: database
+      - key: FILESYSTEM_DISK
+        value: local
+      - key: MAIL_MAILER
+        value: smtp
+      - key: MAIL_HOST
+        value: smtp.gmail.com
+      - key: MAIL_PORT
+        value: 587
+      - key: MAIL_USERNAME
+        value: mumenrami1411@gmail.com
+      - key: MAIL_ENCRYPTION
+        value: tls
+      - key: MAIL_FROM_ADDRESS
+        value: "mumenrami1411@gmail.com"
+      - key: MAIL_FROM_NAME
+        value: "Momen Portfolio"
+      # Secrets to be set in the Render Dashboard dashboard (marked as sync)
+      - key: APP_KEY
+        sync: true
+      - key: MAIL_PASSWORD
+        sync: true
 
 databases:
   - name: portfolio-db
-    plan: free # or your preferred plan
+    plan: free
     region: frankfurt
     databaseName: portfolio
     user: momen
